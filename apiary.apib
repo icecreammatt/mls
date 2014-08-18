@@ -1,38 +1,31 @@
 FORMAT: 1A
 HOST: http://www.google.com
 
-# mls
+# MLS
 MLS API is a multiple listings service for homes
 
-# Group Notes
-Notes related resources of the **Notes API**
+# Group Homes
+Homes related resources of the **Homes API**
 
-## Notes Collection [/notes]
-### List all Notes [GET]
+## Homes Collection [/homes]
+### List all Homes [GET]
 + Response 200 (application/json)
 
         [{
-          "id": 1, "title": "Jogging in park"
+          "id": 2, "address": "3756 Preston Street"
         }, {
-          "id": 2, "title": "Pick-up posters from post-office"
+          "id": 3, "address": "196 Woodside Circle"
         }]
 
-### Create a Note [POST]
-+ Request (application/json)
-
-        { "title": "Buy cheese and bread for breakfast." }
-
-+ Response 201 (application/json)
-
-        { "id": 3, "title": "Buy cheese and bread for breakfast." }
-
-## Note [/notes/{id}]
-A single Note object with all its details
+## Home [/homes/{id}]
+A single Home object with all its details
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
+    + id (required, number, `1`) ... Numeric `id` of the Home to perform action with. Has example value.
 
-### Retrieve a Note [GET]
+### Retrieve a Home [GET]
++ Request (application/json)
+
 + Response 200 (application/json)
 
     + Header
@@ -41,7 +34,37 @@ A single Note object with all its details
 
     + Body
 
-            { "id": 2, "title": "Pick-up posters from post-office" }
+            { "id": 3, "address": "196 Woodside Circle" }
 
-### Remove a Note [DELETE]
+## Favorites Collection [/favorites]
+### List all Favorites [GET]
++ Response 200 (application/json)
+
+        [{
+          "id": 2, "address": "3756 Preston Street"
+        }, {
+          "id": 3, "address": "196 Woodside Circle"
+        }]
+        
+### Create a Favorite [POST]
++ Request (application/json)
+
+        { "id": 3 }
+
++ Response 201 (application/json)
+
+### Remove a Favorite [DELETE]
++ Request (application/json)
+
+        { "id": 3 }
+
 + Response 204
+
+## Favorite [/favorites/{id}]
+A single home object with all its detail
+### Retrieve a Favorite [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+
+        { "id": 3, "address": "196 Woodside Circle" }
